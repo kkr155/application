@@ -17,8 +17,8 @@ loglevel = 'info'
 accesslog = "./logs/access.log"
 errorlog = "./logs/error.log"
 
-# 后台运行 将guncorn放在后台运行，会消失并没有任何输出
-daemon = False
+# 后台运行
+daemon = True
 
 # 进程文件
 pidfile = "./logs/gunicorn.pid"
