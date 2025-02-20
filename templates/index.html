@@ -3,73 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的简易网页</title>
+    <title>简历</title>
     <style>
         /* 简单的CSS样式 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 30px;
             background-color: #f0f0f0;
         }
+         /* 根布局 */
         .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
+        /*头布局 标题*/
         .header {
             text-align: center;
             color: #333;
         }
-        .nav {
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #eee;
-            border-radius: 4px;
-        }
-        .nav a {
-            margin: 0 10px;
-            text-decoration: none;
+        /*尾布局 版权协议*/
+        .footer {
+            margin-top: 40px;
+            text-align: center;
             color: #666;
         }
+        /*主布局*/
         .content {
             line-height: 1.6;
         }
-        .footer {
-            margin-top: 20px;
+        .row {
+             /* 为每一行设置垂直间距 */
+             margin-bottom: 20px; /* 设置间隔 */
+             display: flex;  /* 将当前行设置为Flexbox容器 */
+             justify-content: space-between;  /* 使子元素(A与B)之间的间隔均匀 */
+        }
+        .item {
+            /* 为每个项目设置水平间距 */
+            flex: 1;
+            max-width: 400px;
+            margin-right: 10px; /* A与B、C与D之间的间隔 */
+        }
+        .tab-content {
+            border: 1px solid #ccc;
+            /* border-top: none; */
+            display: none; /* 默认隐藏 */
+        }
+        .tab-content.active {
+            display: block; /* 显示激活的内容 */
+        }
+        .tabs{
+            display: flex; 
+            justify-content: space-between;  
+        }
+        .tab {
+            flex: 1;
             text-align: center;
-            color: #666;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: #ddd;
+        }
+        .tab.active {
+            background-color: #fff;
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>欢迎访问我的网页</h1>
-        </div>
-
-        <div class="nav">
-            <a href="#home">首页</a>
-            <a href="#about">关于</a>
-            <a href="#contact">联系我们</a>
+            <h1>简历</h1>
         </div>
 
         <div class="content">
-            <h2>主要内容</h2>
-            <p>这是一个简单的HTML页面示例，包含了基本的页面结构和样式。</p>
-            <ul>
-                <li>支持响应式设计</li>
-                <li>包含基本的CSS样式</li>
-                <li>清晰的页面结构</li>
-            </ul>
+            <h2>个人信息</h2>
+            <div class="row">
+                <span class="item">姓名：张先杰</span>
+                <span class="item">性别：男</span>
+            </div>
+            <div class="row">
+                <span class="item">邮箱：xianjie.zhang516@gmail.com</span>
+                <span class="item">电话及微信：15052093802</span>
+            </div>
+            <div class="row">
+                <span class="item">开发经验：6年</span>
+            
+            </div>
+            </hr>
+            
+            <h2>专业技能</h2>
+           
+            <div class="tabs">
+                <span onclick="showTab('app')" class="tab active" id="apptab">Android App</span>
+                <span onclick="showTab('framework')" class="tab" id="frameworktab">Android Framework</span>
+            </div>
+          
+
+            <div id="app" class="tab-content active">
+                <ul>
+                    <li>熟悉 Java 语言，熟悉 java GC 垃圾回收机制，类加载机制，内存泄漏</li>
+                    <li>熟练使用 Kotlin，掌握 Kotlin 特性、</li>
+                    <li>Android 基础扎实，熟悉 Android 中的消息机制（Handler）、有完整的 Android 项目经
+                        验，可独立开发 Android APP，有项目搭建能力，理解 MVC、MVP、 MVVM 的架构概念</li>
+                    <li>熟悉 Android 事件分发，能够解决事件冲突，针对外观的一系列样式：沉浸式，协调者布
+                        局，流式布局等、能够完成一定程度的自定义 View，</li>
+                    <li>熟练掌握 Android 的性能优化，如启动优化，内存优化，布局优化，APK 大小优化</li>
+                    <li>熟悉 Android 各版本的新特性以及版本适配</li>
+                    <li>有网络基础，了解 TCP/IP 四层模型及每一层对应的常用协议及作用 ，TCP 连接的建立和关
+                        闭；长连接的实现方式，从无到有封装过网络框架(已成功在两个项目实现移植)，并提供远程
+                        库：
+                        https://github.com/zhangxianjie-c/sdk-ocean-core
+                        implementation ("com.github.zhangxianjie-c:sdk-ocean-core:2.0.17")</li>
+                    <li>熟悉 Gradle 构建流程、了解 Gradle 基础配置、构建类型 buildTypes、变体类型
+                        productFlavors、自定义简单的 Task(批量打包、统一文件路径之类的)</li>
+                    <li>发布过开源库，主要是作为远程依赖，支付和扫码</li>
+                    <li>集成过 C++库，对 Cmake 配置和 jni 有一定了解，主要是通过 yuv 库处理 Zxing</li>
+                    <li>熟悉微信、支付宝支付第三方 SDK 的实现流程，集成过环信即时通信的单聊</li>
+                    <li>熟悉 Glide 图片框架，了解图片缓存和三级缓存等</li>
+                    <li>有较强的错误排查能力以及代码容错意识，熟练使用 App Inspection 进行数据请求管理</li>
+                    <li>了解 Flutter 和 Compose，可以完成布局与网络请求</li>
+                </ul>
+            </div>
+            <div id="framework" class="tab-content">
+                <ul>
+                    <li>使用cvd代替avd进行运行</li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer">
-            <p>© 2024 我的网站. 保留所有权利.</p>
+            <p>© 2024. All rights reserved.</br>
+
+                Licensed under the MIT License. See LICENSE for details.</br>
+                
+                Contact: xianjie.zhang516@gmail.com</p>
         </div>
+
+        <script>
+            function showTab(tabId) {
+                // 隐藏所有内容
+                const contents = document.querySelectorAll('.tab-content');
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                });
+        
+                // 移除所有标签的活动状态
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+        
+                // 显示当前选中的内容
+                document.getElementById(tabId).classList.add('active');
+        
+                // 设置当前标签为活动状态
+                const activeTab = Array.from(tabs).find(tab => tab.id === tabId+'tab');
+                if (activeTab) {
+                    activeTab.classList.add('active');
+                }
+            }
+        </script>
     </div>
 
     <script>

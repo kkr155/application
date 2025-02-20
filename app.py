@@ -1,50 +1,39 @@
-# 不使用域名的服务器部署方式
-import os
-import sys
+# 不使用域名的服务器部署方式db.init_app(app)
+from flask import Flask
 
-from flask import Flask, send_from_directory, render_template
+from utils import resource_path
 
+from database import db
 
-def resource_path(relative_path):
-    """ 获取资源绝对路径 """
-    try:
-        # PyInstaller创建临时文件夹,将路径存储于_MEIPASS
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-    return str(os.path.join(base_path, relative_path))
-
+from routes import main as main_routes
 
 app = Flask(__name__,
             template_folder=resource_path('templates'),
             static_folder=resource_path('static'))
 
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# 配置 SQLite 数据库
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# 初始化 SQLAlchemy
+db.init_app(app)
 
 
-@app.route('/pdfs/<path:filename>')
-def pdf_show(filename):
-    actual_filename = dispose_pdf_name(filename)
-    if actual_filename:  # 如果找到对应的文件名
-        return send_from_directory('static/pdfs', actual_filename)
-    else:
-        return "File not found", 404
+# @app.before_first_request 装饰器标记的函数会在服务器接收到第一个 HTTP 请求之前被调用一次
+@app.before_request
+def create_tables():
+    if not app.config['APP_ALREADY_STARTED']:
+        db.create_all()
+        app.config['APP_ALREADY_STARTED'] = True
 
 
-def dispose_pdf_name(filename):
-    # 将请求的 filename 转换为对应的实际文件名
-    mapping = {
-        '近代史': '中国近现代史纲要-重点知识点整理18版.pdf',
-        '简历': '张先杰简历(Android开发)4.5.pdf'
-    }
-    return mapping.get(filename)
+app.register_blueprint(main_routes)  # 注册蓝图
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.config['APP_ALREADY_STARTED'] = False   # 初始化变量
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 
