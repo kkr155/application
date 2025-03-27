@@ -1,0 +1,128 @@
+
+/* 主容器 */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+/* 文件信息卡片 */
+.file-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.file-info {
+    margin-bottom: 1.5rem;
+}
+
+.file-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.file-details {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* 二维码容器 */
+.qr-container {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+    background: white;
+    border-radius: calc(var(--radius) * 0.8);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex; /* 添加这一行 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.qr-container::after {
+    content: "扫码下载";
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 下载按钮 */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(43, 144, 217, 0.2);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(43, 144, 217, 0.3);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+
+
+/* 加载动画 */
+.qr-loading {
+    animation: pulse 1.5s infinite;
+    opacity: 0.7;
+
+}
+
+.qr-image {
+    object-fit: contain; /* 添加这一行 */
+    max-width: 100%; /* 最大宽度为父容器的100% */
+    max-height: 100%; /* 最大高度为父容器的100% */
+    width: auto; /* 自动宽度以保持比例 */
+    height: auto; /* 自动高度以保持比例 */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .file-name {
+        font-size: 1.2rem;
+    }
+
+    .qr-container {
+        width: 80%;
+        height: 80%;
+    }
+}

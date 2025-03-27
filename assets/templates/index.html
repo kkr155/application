@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}子页面{% endblock %}
+{% block head %}
+  {{ super() }}
+    <meta name="description" content="内部分发">
+{% endblock %}
+
+<body>
+{% block content %}
+<!-- 内容区域 -->
+<section class="content">
+    <div>
+        <h1>Web</h1>
+        <p>测试页面</p>
+        <button class="cta-button" onclick="toggleTheme()">切换主题</button>
+    </div>
+</section>
+
+<!-- 功能卡片 -->
+<div class="card-grid">
+    <article class="card">
+        <h2>前端开发</h2>
+        <p>Android, Python TK及现代框架</p>
+        <div class="progress-bar">
+            <div class="progress" style="width: 75%"></div>
+        </div>
+    </article>
+
+    <article class="card">
+        <h2>后端开发</h2>
+        <p>Python Flask, 数据库与API设计</p>
+        <div class="progress-bar">
+            <div class="progress" style="width: 60%"></div>
+        </div>
+    </article>
+
+</div>
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}" as="style">
+<nav class="navbar">
+    <a href="{{ url_for('main.index') }}" class="nav-logo">主页</a>
+    <ul class="nav-menu">
+        <li><a href="{{ url_for('main.distribute') }}" class="nav-link">APK管理</a></li>
+        <li><a href="#projects" class="nav-link">Api测试</a></li>
+        <li><a href="{{ url_for('main.resume') }}" class="nav-link">简历</a></li>
+        <li><button class="theme-toggle" onclick="toggleTheme()">🌓</button></li>
+    </ul>
+</nav>
