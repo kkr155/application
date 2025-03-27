@@ -4,52 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythonweb.iml" beforeDir="false" />
+    <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/nginx/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gunicorn.conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/pdfs/中国近现代史纲要-重点知识点整理18版.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/pdfs/张先杰简历(Android开发)4.5.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/copyright.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/questions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/resume.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/study.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/jsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/assets/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/assets/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/assets/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/TheWelcome.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/WelcomeItem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/icons/IconCommunity.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/icons/IconDocumentation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/icons/IconEcosystem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/icons/IconSupport.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/icons/IconTooling.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/vite.config.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +49,12 @@
       <recent name="D:\Develop\Python\PythonProject\application\assets" />
       <recent name="D:\Develop\Python\PythonProject\application" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Develop\Python\PythonProject\application\nginx" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="application" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -107,7 +67,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="D:\Develop\Python\PythonProject\application\app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,6 +93,27 @@
       <option name="presentableId" value="Default" />
       <updated>1742864983785</updated>
     </task>
+    <task id="LOCAL-00001" summary="first">
+      <option name="closed" value="true" />
+      <created>1743054384152</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743054384152</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first">
+      <option name="closed" value="true" />
+      <created>1743054463461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743054463461</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first" />
+    <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
 </project>
