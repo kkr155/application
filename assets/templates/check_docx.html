@@ -1,0 +1,19 @@
+<input type="file" id="docxInput">
+<div id="output"></div>
+
+<script src="https://unpkg.com/mammoth@1.4.8/mammoth.browser.min.js"></script>
+<script>
+document.getElementById('docxInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        mammoth.convertToHtml({ arrayBuffer: reader.result })
+            .then(result => {
+                document.getElementById('output').innerHTML = result.value;
+            });
+    };
+
+    reader.readAsArrayBuffer(file);
+});
+</script>

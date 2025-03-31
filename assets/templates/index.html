@@ -1,22 +1,20 @@
 {% extends "base.html" %}
-{% block title %}子页面{% endblock %}
+{% block title %}首页{% endblock %}
 {% block head %}
-  {{ super() }}
-    <meta name="description" content="内部分发">
+{{ super() }}
+<meta name="description" content="内部分发">
 {% endblock %}
 
-<body>
 {% block content %}
-<!-- 内容区域 -->
-<section class="content">
+
+<section class="content_show">
     <div>
         <h1>Web</h1>
         <p>测试页面</p>
-        <button class="cta-button" onclick="toggleTheme()">切换主题</button>
     </div>
 </section>
 
-<!-- 功能卡片 -->
+
 <div class="card-grid">
     <article class="card">
         <h2>前端开发</h2>
@@ -37,5 +35,3 @@
 </div>
 {% endblock %}
 
-</body>
-</html>

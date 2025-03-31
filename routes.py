@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, send_file
 
 main = Blueprint('main', __name__, )
 
@@ -13,6 +13,7 @@ def response_json_wrapper(func):
         else:
             # 如果不符合预期格式，包装为默认响应
             return jsonify(make_response(data=result)), 200
+
     return wrapper
 
 
@@ -48,6 +49,7 @@ def not_found(error):
 @main.errorhandler(500)
 @response_json_wrapper
 def internal_error(error):
+    print(error)
     return make_response(code=500, data=None, message="服务器内部错误")
 
 
@@ -57,6 +59,7 @@ def internal_error(error):
 def handle_exception(e):
     if isinstance(e, ValueError):
         return make_response(code=400, data=None, message=str(e))
+    print(e)
     return make_response(code=500, data=None, message="服务器内部错误")
 
 
@@ -73,9 +76,23 @@ def resume():
 
 
 # 列表
-@main.route('/md')
-def md():
-    return render_template("md.html")
+@main.route('/table')
+def table():
+    return render_template("table.html")
+
+
+@main.route('/document')
+def document():
+    return render_template("document.html")
+
+
+@main.route('/document.docx')
+def document_docx():
+    return send_file(
+        "assets/document.docx",
+        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=False  # True 会触发下载，False 直接显示
+    )
 
 
 # 分发
@@ -101,4 +118,6 @@ def test():
     return "test"
 
 
-
+@main.route('/new')
+def new():
+    return render_template("new.html")
