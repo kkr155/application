@@ -62,7 +62,7 @@ def internal_error(error):
 def handle_exception(e):
     if isinstance(e, ValueError):
         return make_response(code=400, data=None, message=str(e))
-    print(e)
+    print(str(e))
     return make_response(code=500, data=None, message="服务器内部错误")
 
 
@@ -78,10 +78,6 @@ def resume():
     return render_template('resume.html')
 
 
-# 列表
-@main.route('/table')
-def table():
-    return render_template("table.html")
 
 
 @main.route('/document')
@@ -121,9 +117,21 @@ def test():
     return "test"
 
 
-@main.route('/ModernHistory/getTable')
+# 近代史json
+@main.route('/json/modern-history')
 def new():
-    return render_template("jindaishi.json")
+    return send_from_directory(
+        static_dir,
+        'data/modern-history.json',
+        mimetype='application/json'
+    )
+
+
+# 列表
+@main.route('/table')
+def table():
+    return render_template("table.html")
+
 
 @main.route('/tables/<table_type>')
 def table_show(table_type):

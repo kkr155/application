@@ -4,7 +4,7 @@
         const tableBody = document.getElementById('table-body');
 
         // 请求API数据
-        fetch('/ModernHistory/getTable')
+        fetch('/json/modern-history')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('网络响应异常');

@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/assets/static/js/modern_history.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/templates/jindaishi.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/templates/tables.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/distribute.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/css/distribute.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/distribute.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/js/distribute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/css/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/static/js/modern-history.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/js/modern-history.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/templates/jindaishi.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/data/modern-history.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/table.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,10 +70,11 @@
       <recent name="D:\Develop\Python\PythonProject\application" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\data" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\css" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\js" />
       <recent name="D:\Develop\Python\PythonProject\application\assets\templates" />
       <recent name="D:\Develop\Python\PythonProject\application\assets" />
-      <recent name="D:\Develop\Python\PythonProject\application\assets\static" />
-      <recent name="D:\Develop\Python\PythonProject\application\nginx" />
     </key>
   </component>
   <component name="RunManager" selected="Python.app">
@@ -181,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743400660967</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="first">
+      <option name="closed" value="true" />
+      <created>1743473692988</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743473692988</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
