@@ -80,18 +80,7 @@ def resume():
 
 
 
-@main.route('/document')
-def document():
-    return render_template("document.html")
 
-
-@main.route('/document.docx')
-def document_docx():
-    return send_file(
-        "assets/document.docx",
-        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        as_attachment=False  # True 会触发下载，False 直接显示
-    )
 
 
 # 分发
@@ -126,6 +115,28 @@ def new():
         mimetype='application/json'
     )
 
+# 近代史word
+@main.route('/word/modern-history')
+def document_docx():
+    return send_file(
+        "assets/static/data/modern-history.docx",
+        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=False  # True 会触发下载，False 直接显示
+    )
+
+# word文档解析
+@main.route('/document/<document_type>')
+def document(document_type):
+    # 定义合法路径映射
+    script_mapping = {
+        'modern-history': 'js/modern-history-docx.js',
+    }
+    # 获取对应的JS路径（默认回退）
+    js_path = script_mapping.get(document_type, 'js/default.js')
+    return render_template("document.html", js_path=js_path)
+
+
+
 
 # 列表
 @main.route('/table')
@@ -137,8 +148,7 @@ def table():
 def table_show(table_type):
     # 定义合法路径映射
     script_mapping = {
-        'ModernHistory': 'js/modern-history.js',
-        'history': 'js/history-table.js'
+        'modern-history': 'js/modern-history.js',
     }
     # 获取对应的JS路径（默认回退）
     js_path = script_mapping.get(table_type, 'js/default.js')
@@ -147,6 +157,7 @@ def table_show(table_type):
     return render_template('tables.html', js_path=js_path)
 
 
-# @main.route('/table')
-# def table():
-#     return render_template("table.html")
+# 练习
+@main.route('/todo-list')
+def todolist():
+    return render_template("practice/todo-list.html")

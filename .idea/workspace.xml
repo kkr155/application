@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="first">
+      <change afterPath="$PROJECT_DIR$/assets/static/js/modern-history-docx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/templates/practice/todo-list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/js/modern-history.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/js/modern-history.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/document.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/data/modern-history.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/jindaishi.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/data/modern-history.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/templates/document.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/document.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743473692988</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="first">
+      <option name="closed" value="true" />
+      <created>1743476918054</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743476918054</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
