@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, jsonify, send_file
+from flask import Blueprint, render_template, jsonify, send_file, send_from_directory
+
+from path_util import static_dir
 
 main = Blueprint('main', __name__, )
 
@@ -43,6 +45,7 @@ def after_request(response):
 @main.errorhandler(404)
 @response_json_wrapper
 def not_found(error):
+    print(error)
     return make_response(code=404, data=None, message="资源未找到")
 
 
@@ -118,6 +121,24 @@ def test():
     return "test"
 
 
-@main.route('/new')
+@main.route('/ModernHistory/getTable')
 def new():
-    return render_template("new.html")
+    return render_template("jindaishi.json")
+
+@main.route('/tables/<table_type>')
+def table_show(table_type):
+    # 定义合法路径映射
+    script_mapping = {
+        'ModernHistory': 'js/modern-history.js',
+        'history': 'js/history-table.js'
+    }
+    # 获取对应的JS路径（默认回退）
+    js_path = script_mapping.get(table_type, 'js/default.js')
+
+    # 渲染模板并传递JS路径
+    return render_template('tables.html', js_path=js_path)
+
+
+# @main.route('/table')
+# def table():
+#     return render_template("table.html")

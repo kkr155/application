@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" as="style">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}" as="style">
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="table-container">
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th>时间</th>
+            <th>名称</th>
+            <th>影响</th>
+            <th>特质</th>
+            <th>地点</th>
+            <th>人物</th>
+            <th>类型</th>
+        </tr>
+        </thead>
+        <tbody id="table-body">
+        <tr>
+            <td colspan="4" class="loading">加载历史数据中...</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- tables.html -->
+<script src="{{ url_for('static', filename=js_path) }}"></script>
+</body>
+</html>
