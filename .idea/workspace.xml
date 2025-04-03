@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="first">
-      <change afterPath="$PROJECT_DIR$/assets/static/js/modern-history-docx.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/templates/practice/todo-list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/document.docx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/data/modern-history.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/document.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/document.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +72,7 @@
       <recent name="D:\Develop\Python\PythonProject\application\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager">
     <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="application" />
       <option name="ENV_FILES" value="" />
@@ -127,7 +121,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
       </set>
     </attachedChunks>
   </component>
@@ -142,6 +136,7 @@
       <workItem from="1743074963736" duration="2549000" />
       <workItem from="1743386559134" duration="3564000" />
       <workItem from="1743470694684" duration="1326000" />
+      <workItem from="1743649426843" duration="338000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -191,11 +186,58 @@
       <option name="project" value="LOCAL" />
       <updated>1743476918054</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="first">
+      <option name="closed" value="true" />
+      <created>1743489771004</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743489771004</updated>
+    </task>
+    <task id="LOCAL-00008" summary="first">
+      <option name="closed" value="true" />
+      <created>1743647550557</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743647550557</updated>
+    </task>
+    <task id="LOCAL-00009" summary="first">
+      <option name="closed" value="true" />
+      <created>1743648421859</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743648421859</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
