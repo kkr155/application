@@ -4,10 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="first">
+    <list default="true" id="320ecb8d-c98f-4c52-b69c-1928b19b9242" name="Changes" comment="修复主题切换">
+      <change afterPath="$PROJECT_DIR$/assets/static/css/all.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/css/live2d.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/apple-touch-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/site.webmanifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/web-app-manifest-192x192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/favicon/web-app-manifest-512x512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/js/live2d.app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/live2d/buildData.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/live2d/costumeBG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/live2d/kokoro.moc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/static/live2d/texture_00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/templates/live2d.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/templates/document.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/document.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assets/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +33,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -42,6 +59,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;JavaScript Debug.document.html.executor&quot;: &quot;Run&quot;,
     &quot;JavaScript Debug.table.html.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.ToolLive2DViewerSingle.644a716e.js.executor&quot;: &quot;Run&quot;,
     &quot;Python.app (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
@@ -50,7 +68,8 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Develop/Python/PythonProject/application&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Develop/Sdk/CubismSdkForWeb-5-r.3&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -61,17 +80,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\js" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\css" />
       <recent name="D:\Develop\Python\PythonProject\application\assets\templates" />
       <recent name="D:\Develop\Python\PythonProject\application\assets\static" />
       <recent name="D:\Develop\Python\PythonProject\application\assets" />
-      <recent name="D:\Develop\Python\PythonProject\application" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Develop\Python\PythonProject\application\assets\static\data" />
-      <recent name="D:\Develop\Python\PythonProject\application\assets\static\css" />
       <recent name="D:\Develop\Python\PythonProject\application\assets\static\js" />
-      <recent name="D:\Develop\Python\PythonProject\application\assets\templates" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\live2d" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\favicon" />
       <recent name="D:\Develop\Python\PythonProject\application\assets" />
+      <recent name="D:\Develop\Python\PythonProject\application\assets\static\data" />
     </key>
   </component>
   <component name="RunManager">
@@ -138,7 +158,10 @@
       <workItem from="1743074963736" duration="2549000" />
       <workItem from="1743386559134" duration="3564000" />
       <workItem from="1743470694684" duration="1326000" />
-      <workItem from="1743649426843" duration="1016000" />
+      <workItem from="1743649426843" duration="9401000" />
+      <workItem from="1743988049867" duration="519000" />
+      <workItem from="1743988586566" duration="9919000" />
+      <workItem from="1744080156518" duration="1228000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <option name="closed" value="true" />
@@ -220,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743649981415</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="修复主题切换">
+      <option name="closed" value="true" />
+      <created>1743650683021</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1743650683021</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +282,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first" />
-    <option name="LAST_COMMIT_MESSAGE" value="first" />
+    <MESSAGE value="修复主题切换" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复主题切换" />
   </component>
 </project>

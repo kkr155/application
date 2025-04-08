@@ -89,15 +89,6 @@ def distribute():
     return render_template("distribute.html")
 
 
-@main.route('/distribute.css')
-def distribute_css():
-    return render_template("distribute.css")
-
-
-@main.route('/distribute.js')
-def distribute_js():
-    return render_template("distribute.js")
-
 
 @main.route('/test', methods=['GET'])
 @response_json_wrapper
@@ -136,8 +127,6 @@ def document(document_type):
     return render_template("document.html", js_path=js_path)
 
 
-
-
 # 列表
 @main.route('/table')
 def table():
@@ -161,3 +150,17 @@ def table_show(table_type):
 @main.route('/todo-list')
 def todolist():
     return render_template("practice/todo-list.html")
+
+@main.route('/live2d')
+def live2d():
+    return render_template("live2d.html")
+
+
+@main.route('/live2d/moc')
+def moc():
+    return render_template("live2d/kokoro.moc")
+
+
+@main.route('/live2d/texture')
+def texture():
+    return render_template("live2d/texture_00.png")
