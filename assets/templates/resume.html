@@ -4,79 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>简历</title>
-    <style>
-        /* 简单的CSS样式 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 30px;
-            background-color: #f0f0f0;
-        }
-         /* 根布局 */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        /*头布局 标题*/
-        .header {
-            text-align: center;
-            color: #333;
-        }
-        /*尾布局 版权协议*/
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #666;
-        }
-        /*主布局*/
-        .content_show {
-            line-height: 1.6;
-        }
-        .row {
-             /* 为每一行设置垂直间距 */
-             margin-bottom: 20px; /* 设置间隔 */
-             display: flex;  /* 将当前行设置为Flexbox容器 */
-             justify-content: space-between;  /* 使子元素(A与B)之间的间隔均匀 */
-        }
-        .item {
-            /* 为每个项目设置水平间距 */
-            flex: 1;
-            max-width: 400px;
-            margin-right: 10px; /* A与B、C与D之间的间隔 */
-        }
-        .tab-content {
-            border: 1px solid #ccc;
-            /* border-top: none; */
-            display: none; /* 默认隐藏 */
-        }
-        .tab-content.active {
-            display: block; /* 显示激活的内容 */
-        }
-        .tabs{
-            display: flex; 
-            justify-content: space-between;  
-        }
-        .tab {
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            padding: 10px 20px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            transition: background-color 0.3s;
-        }
-        .tab:hover {
-            background-color: #ddd;
-        }
-        .tab.active {
-            background-color: #fff;
-            border-bottom: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resume.css') }}" as="style">
 </head>
 <body>
 <div class="container">
@@ -149,37 +77,8 @@
         {% include 'copyright.html' %}
     </footer>
 
-    <script>
-        function showTab(tabId) {
-            // 隐藏所有内容
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
+  <script src=/static/js/resume.js></script>
 
-            // 移除所有标签的活动状态
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // 显示当前选中的内容
-            document.getElementById(tabId).classList.add('active');
-
-            // 设置当前标签为活动状态
-            const activeTab = Array.from(tabs).find(tab => tab.id === tabId+'tab');
-            if (activeTab) {
-                activeTab.classList.add('active');
-            }
-        }
-    </script>
 </div>
-
-<script>
-    // 简单的JavaScript示例
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('页面加载完成！');
-    });
-</script>
 </body>
 </html>

@@ -78,11 +78,6 @@ def resume():
     return render_template('resume.html')
 
 
-
-
-
-
-
 # 分发
 @main.route('/distribute')
 def distribute():
@@ -93,7 +88,6 @@ def distribute():
 @main.route('/test', methods=['GET'])
 @response_json_wrapper
 def test():
-    raise ValueError("测试")
     return "test"
 
 
@@ -128,9 +122,9 @@ def document(document_type):
 
 
 # 列表
-@main.route('/table')
-def table():
-    return render_template("table.html")
+# @main.route('/table')
+# def table():
+#     return render_template("table.html")
 
 
 @main.route('/tables/<table_type>')
@@ -146,21 +140,3 @@ def table_show(table_type):
     return render_template('tables.html', js_path=js_path)
 
 
-# 练习
-@main.route('/todo-list')
-def todolist():
-    return render_template("practice/todo-list.html")
-
-@main.route('/live2d')
-def live2d():
-    return render_template("live2d.html")
-
-
-@main.route('/live2d/moc')
-def moc():
-    return render_template("live2d/kokoro.moc")
-
-
-@main.route('/live2d/texture')
-def texture():
-    return render_template("live2d/texture_00.png")
