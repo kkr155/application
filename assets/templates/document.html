@@ -4,34 +4,8 @@
 {% block head %}
 {{ super() }}
 <meta name="description" content="docx">
+<link rel="stylesheet" href="{{ url_for('static', filename=css_path) }}" as="style">
 
-<style>
-    /* 目录样式 */
-
-    #toc-container {
-        position: fixed;
-        left: 20px;
-        top: 100px;
-        width: 250px;
-        padding: 15px;
-        border-right: 1px solid #ddd;
-        overflow-y: auto;
-        max-height: 80vh;
-    }
-
-    #doc-container {
-        margin-left: 20px;
-        padding: 20px;
-    }
-.content_text {
-    display: grid;
-    place-items: center;
-    padding-left: 20rem;
-    padding-right: 20rem;
-    color:  var(--text), var(--text);
-}
-
-</style>
 {% endblock %}
 
 {% block content %}

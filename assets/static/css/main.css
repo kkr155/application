@@ -48,6 +48,14 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 }
 
+.content_text {
+        display: grid;
+        place-items: center;
+        padding-left: 20rem;
+        padding-right: 20rem;
+        color: var(--color), var(--color);
+    }
+
 .content_show h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;

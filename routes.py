@@ -109,16 +109,31 @@ def document_docx():
         as_attachment=False  # True 会触发下载，False 直接显示
     )
 
+
+@main.route('/word/resume')
+def document_docx_resume():
+    return send_file(
+        "assets/static/data/resume.docx",
+        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=False  # True 会触发下载，False 直接显示
+    )
+
 # word文档解析
 @main.route('/document/<document_type>')
 def document(document_type):
     # 定义合法路径映射
     script_mapping = {
         'modern-history': 'js/modern-history-docx.js',
+        'resume': 'js/resume-docx.js',
+    }
+    script_mapping_css = {
+        'modern-history': 'css/modern-history-docx.css',
+        'resume': 'css/resume-docx.css',
     }
     # 获取对应的JS路径（默认回退）
     js_path = script_mapping.get(document_type, 'js/default.js')
-    return render_template("document.html", js_path=js_path)
+    css_path = script_mapping_css.get(document_type, 'css/default.css')
+    return render_template("document.html", js_path=js_path,css_path=css_path)
 
 
 # 列表
@@ -132,11 +147,17 @@ def table_show(table_type):
     # 定义合法路径映射
     script_mapping = {
         'modern-history': 'js/modern-history.js',
+        'resume': 'js/resume-docx.js',
     }
+
     # 获取对应的JS路径（默认回退）
     js_path = script_mapping.get(table_type, 'js/default.js')
-
     # 渲染模板并传递JS路径
     return render_template('tables.html', js_path=js_path)
+
+@main.route('/live2d')
+def live2d():
+    return render_template("live2d.html")
+
 
 
