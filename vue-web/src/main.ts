@@ -3,10 +3,10 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import App from './App.vue'
+import Live2D from './App.vue'
 import router from './router'
 
-const app = createApp(App)
+const app = createApp(Live2D)
 
 app.use(createPinia())
 app.use(router)
