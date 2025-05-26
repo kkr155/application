@@ -4,6 +4,7 @@ from flask import Flask
 
 from routes import main as main_routes
 from path_util import template_dir, static_dir, project_path
+from flask_cors import CORS  # 添加这行
 
 app = Flask(__name__,
             template_folder=str(template_dir),
@@ -11,7 +12,7 @@ app = Flask(__name__,
 print(project_path)
 print(template_dir)
 app.register_blueprint(main_routes)  # .\.venv\Scripts\activate注册蓝图
-
+CORS(app)
 
 # def run_flask():
 #     app.run(host='0.0.0.0', port=5000, debug=False)

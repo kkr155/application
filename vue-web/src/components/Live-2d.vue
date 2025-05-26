@@ -1,12 +1,9 @@
 <script setup lang="ts">
-
 </script>
 
 
 <template>
   <body onload="sampleApp1()">
-
-
 
   <div>
     <canvas id="glcanvas" width="272" height="376">

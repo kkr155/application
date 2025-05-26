@@ -1,4 +1,8 @@
-from flask import Blueprint, render_template, jsonify, send_file, send_from_directory
+import os
+
+from flask import Blueprint, render_template, jsonify, send_file, send_from_directory, request
+
+from werkzeug.utils import secure_filename
 
 from path_util import static_dir
 
@@ -83,11 +87,13 @@ def resume():
 def distribute():
     return render_template("distribute.html")
 
-
-
-@main.route('/test', methods=['GET'])
-@response_json_wrapper
+@main.route('/test')
 def test():
+    return render_template("test.html")
+
+@main.route('/test_', methods=['GET'])
+@response_json_wrapper
+def test_():
     return "test"
 
 
@@ -158,6 +164,57 @@ def table_show(table_type):
 @main.route('/live2d')
 def live2d():
     return render_template("live2d.html")
+
+
+# 下载补丁
+@main.route('/hotfix/<file_name>')
+def hotfix(file_name):
+    return send_file(
+        "assets/static/data/hotfix/"+file_name,
+        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=False  # True 会触发下载，False 直接显示
+    )
+
+
+@main.route('/upload_hotfix', methods=['POST'])
+def upload_hotfix():
+    # 检查是否有文件部分
+    if 'file' not in request.files:
+        return jsonify({
+            "status": "error",
+            "error": "No file part"
+        }), 400
+
+    file = request.files['file']
+
+    # 检查是否选择了文件
+    if file.filename == '':
+        return jsonify({
+            "status": "error",
+            "error": "No selected file"
+        }), 400
+
+    # 确保上传目录存在
+    upload_folder = "assets/static/data/hotfix/"
+    os.makedirs(upload_folder, exist_ok=True)
+
+    # 处理文件名
+    filename = secure_filename(file.filename)
+    save_path = os.path.join(upload_folder, filename)
+
+    try:
+        file.save(save_path)
+        return jsonify({
+            "status": "success",
+            "path": f"/hotfix/{filename}",
+            "size": os.path.getsize(save_path)
+        }), 200
+    except Exception as e:
+        print(str(e))
+        return jsonify({
+            "status": "error",
+            "error": str(e)
+        }), 500
 
 
 

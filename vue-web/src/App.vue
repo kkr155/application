@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import NavigationBar from "@/components/NavigationBar.vue";
-import HomeView from "@/views/HomeView.vue";
-import Live2d from "@/components/Live-2d.vue";
-
+import CopyRight from "@/components/CopyRight.vue";
 
 </script>
-
 <template>
   <body>
   <NavigationBar />
-  <HomeView />
-  <Live2d/>
+<!--  <Live2d/>-->
+  <RouterView/>
+  <CopyRight/>
   </body>
 
-  <RouterView />
 </template>
 
 <style scoped>
