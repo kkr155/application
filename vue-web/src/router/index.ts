@@ -21,7 +21,7 @@ const router = createRouter({
     {
       path: '/resume',
       name: 'resume',
-      component: ResumeView,
+      component: () => import('@/views/ResumeView.vue'),
     },
     {
       path: '/hotfix',
