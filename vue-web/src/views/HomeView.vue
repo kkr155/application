@@ -14,7 +14,7 @@ const modules = [
     id: 'hotfix',
     title: '热加载',
     icon: 'database',
-    path: 'hotfix',
+    path: '/hotfix',
     glowColor: '#6B5AED'
   },
   {
