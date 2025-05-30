@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import NavigationBar from "@/components/NavigationBar.vue";
-import CopyRight from "@/components/CopyRight.vue";
-
+import NavigationBar from '@/components/NavigationBar.vue'
+import CopyRight from '@/components/CopyRight.vue'
 </script>
 <template>
-  <body>
-  <NavigationBar />
-<!--  <Live2d/>-->
-  <RouterView/>
-  <CopyRight/>
-  </body>
-
+  <div class="app-container">
+    <NavigationBar />
+    <main class="content">
+      <RouterView />
+    </main>
+    <CopyRight />
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

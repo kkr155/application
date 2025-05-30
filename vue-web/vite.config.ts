@@ -17,4 +17,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  build: {
+    rollupOptions: {
+      external: [
+        // 防止这些库被打包
+        /^\/assets\/live2d\/.*\.js$/
+      ]
+    }
+  }
 })

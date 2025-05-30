@@ -15,7 +15,7 @@ const resumeData = {
   skills: [
     { name: 'Android(Kotlin/Java)开发', level: 90 },
     { name: 'Python Flask开发', level: 6 },
-    { name: 'Vue.js/Vue3', level: 4 }
+    { name: 'Vue.js/Vue3(html5/css)', level: 4 }
   ],
  /* languages: [
     { name: '英语 · 专业八级', level: 90 },

@@ -25,6 +25,7 @@ const modules = [
     glowColor: '#FF4D4D'
   }
 ]
+
 </script>
 
 <template>

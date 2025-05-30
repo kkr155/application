@@ -9,8 +9,7 @@ from flask_cors import CORS  # 添加这行
 app = Flask(__name__,
             template_folder=str(template_dir),
             static_folder=str(static_dir))
-print(project_path)
-print(template_dir)
+
 app.register_blueprint(main_routes)  # .\.venv\Scripts\activate注册蓝图
 CORS(app)
 
