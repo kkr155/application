@@ -7,21 +7,21 @@ const modules = [
     id: 'lab',
     title: '简历',
     icon: 'flask',
-    path: '/resume',
+    path: 'resume',
     glowColor: '#2BD2FF'
   },
   {
     id: 'hotfix',
     title: '热加载',
     icon: 'database',
-    path: '/hotfix',
+    path: 'hotfix',
     glowColor: '#6B5AED'
   },
   {
     id: 'gateway',
     title: '饼图预览',
     icon: 'portal',
-    path: '/gateway',
+    path: 'gateway',
     glowColor: '#FF4D4D'
   }
 ]
