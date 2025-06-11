@@ -1,0 +1,235 @@
+<template>
+  <div class="user-management">
+    <!-- 添加用户表单 -->
+    <div class="add-user-form">
+      <h2>添加用户</h2>
+      <form @submit.prevent="handleSubmit">
+        <div class="form-group">
+          <label for="name">名字(用以区分是谁的账号)</label>
+          <input v-model="newUser.name" type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="username">账号</label>
+          <input v-model="newUser.username" type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input v-model="newUser.password" type="password" id="password" required>
+        </div>
+        <button type="submit" :disabled="isSubmitting">
+          {{ isSubmitting ? '提交中...' : '添加用户' }}
+        </button>
+      </form>
+    </div>
+
+    <!-- 用户列表 -->
+    <div class="user-list">
+      <h2>用户列表</h2>
+      <div v-if="loading" class="loading">加载中...</div>
+
+      <!-- 空状态 -->
+      <div v-else-if="users.length === 0" class="empty-state">
+        <img src="@/assets/empty.svg" alt="无数据" width="120">
+        <p>暂无用户数据</p>
+        <button @click="fetchUsers">刷新数据</button>
+      </div>
+
+      <!-- 用户列表 -->
+      <ul v-else>
+        <li v-for="user in users" :key="user.id" class="user-item">
+          <div class="user-info">
+            <span class="name">{{ user.name }}</span>
+            <span class="username">@{{ user.username }}</span>
+          </div>
+          <button
+            @click="deleteUser(user.id)"
+            class="delete-btn"
+            :disabled="deletingId === user.id"
+          >
+            {{ deletingId === user.id ? '删除中...' : '删除' }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+interface User {
+  id: number
+  name: string
+  username: string
+  password: String
+}
+
+// 用户列表数据
+const users = ref<User[]>([])
+const loading = ref(false)
+const error = ref<string | null>(null)
+
+// 添加用户表单
+const newUser = ref({
+  id: 0,
+  name: '',
+  username: '',
+  password: ''
+})
+const isSubmitting = ref(false)
+
+// 删除状态
+const deletingId = ref<number | null>(null)
+
+
+// 获取用户列表
+const fetchUsers = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    const response = await axios.get(`${API_BASE}/users`)
+    users.value = response.data.data
+  } catch (err) {
+    error.value = '获取用户列表失败'
+    console.error('Error fetching users:', err)
+  } finally {
+    loading.value = false
+  }
+}
+
+// 添加用户
+const handleSubmit = async () => {
+  try {
+    isSubmitting.value = true
+    await axios.post(`${API_BASE}/addUser`, newUser.value)
+    // 清空表单
+    newUser.value = { id: 0,name: '', username: '', password: '' }
+    // 刷新列表
+    await fetchUsers()
+  } catch (err) {
+    error.value = '添加用户失败'
+    console.error('Error adding user:', err)
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
+// 删除用户
+const deleteUser = async (id: number) => {
+  if (!confirm('确定要删除这个用户吗？')) return
+
+  try {
+    deletingId.value = id
+    await axios.delete(`${API_BASE}/deleteUser/${id}`)
+    // 删除成功后更新本地数据
+    users.value = users.value.filter(user => user.id !== id)
+  } catch (err) {
+    error.value = '删除用户失败'
+    console.error('Error deleting user:', err)
+  } finally {
+    deletingId.value = null
+  }
+}
+
+// 初始化加载数据
+onMounted(() => {
+  fetchUsers()
+})
+</script>
+
+
+<style scoped>
+h3 {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: var(--dark);
+}
+
+.user-management {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.add-user-form {
+  background: var(--gray);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 15px;
+  background: #42b983;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.user-list {
+  background: var(--gray);;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.loading, .empty-state {
+  text-align: center;
+  padding: 40px 0;
+  color: #666;
+}
+
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.username {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.delete-btn {
+  background: #ff4757;
+}
+
+.empty-state img {
+  margin-bottom: 15px;
+}
+</style>

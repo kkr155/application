@@ -1,0 +1,47 @@
+# 不使用域名的服务器部署方式db.init_app(app)
+from flask import Flask
+from backend.core.extensions import db
+from backend.net.handlers import register_handlers
+from backend.utils.path_util import template_dir, static_dir
+from flask_cors import CORS  # 添加这行
+
+app = Flask(__name__,
+            template_folder=str(template_dir),
+            static_folder=str(static_dir))
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
+app.config['SQLALCHEMY_BINDS'] = {
+    'yuxin': 'sqlite:///yuxin.db'       # 日志表单独一个文件
+}
+
+db.init_app(app)
+
+# 主路由
+from backend.routes.routes_main import main_app as main_routes
+app.register_blueprint(main_routes)
+# 雨昕的路由
+from backend.routes.routes_yuxin import yuxin_app as yuxin_routes
+app.register_blueprint(yuxin_routes)
+
+with app.app_context():
+    db.create_all()
+
+
+
+# 注册全局处理器
+register_handlers(app)
+CORS(app)
+# CORS(app, resources={
+#     r"/api/*": {
+#         "origins": "http://localhost:5000",
+#         "methods": ["GET", "POST", "DELETE", "PUT"],  # 明确允许DELETE
+# "allow_headers": ["Content-Type"]
+#     }
+# })
+
+# def run_flask():
+#     app.run(host='0.0.0.0', port=5000, debug=False)
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

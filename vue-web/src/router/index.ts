@@ -20,9 +20,9 @@ const router = createRouter({
       component: () => import('@/views/ResumeView.vue'),
     },
     {
-      path: '/hotfix',
-      name: 'hotfix',
-      component: () => import('@/views/HotfixView.vue'),
+      path: '/yuxin_user',
+      name: 'yuxin_user',
+      component: () => import('@/views/YuxinUserView.vue'),
     },
     {
       path: '/gateway',

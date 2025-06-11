@@ -2,27 +2,27 @@
 
 // 功能模块配置（避免硬编码）
 const modules = [
+  // {
+  //   id: 'lab',
+  //   title: '简历',
+  //   icon: 'flask',
+  //   path: '/resume',
+  //   glowColor: '#2BD2FF'
+  // },
   {
-    id: 'lab',
-    title: '简历',
-    icon: 'flask',
-    path: '/resume',
-    glowColor: '#2BD2FF'
-  },
-  {
-    id: 'hotfix',
-    title: '热加载',
+    id: 'yuxin_user',
+    title: '雨昕App账号',
     icon: 'database',
-    path: '/hotfix',
+    path: '/yuxin_user',
     glowColor: '#6B5AED'
   },
-  {
-    id: 'gateway',
-    title: '饼图预览',
-    icon: 'portal',
-    path: '/gateway',
-    glowColor: '#FF4D4D'
-  }
+  // {
+  //   id: 'gateway',
+  //   title: '饼图预览',
+  //   icon: 'portal',
+  //   path: '/gateway',
+  //   glowColor: '#FF4D4D'
+  // }
 ]
 
 </script>
