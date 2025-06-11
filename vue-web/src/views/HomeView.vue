@@ -2,16 +2,16 @@
 
 // 功能模块配置（避免硬编码）
 const modules = [
-  // {
-  //   id: 'lab',
-  //   title: '简历',
-  //   icon: 'flask',
-  //   path: '/resume',
-  //   glowColor: '#2BD2FF'
-  // },
+  {
+    id: 'lab',
+    title: '简历',
+    icon: 'flask',
+    path: '/resume',
+    glowColor: '#2BD2FF'
+  },
   {
     id: 'yuxin_user',
-    title: '雨昕App账号',
+    title: 'Api测试',
     icon: 'database',
     path: '/yuxin_user',
     glowColor: '#6B5AED'
