@@ -57,7 +57,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-
+const API_BASE = "https://kokoro.xj.cn/api/yuxin"
 interface User {
   id: number
   name: string
