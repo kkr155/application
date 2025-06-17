@@ -1,12 +1,16 @@
 <script setup lang="ts">
 
-import {ref,onMounted} from "vue";
+import {ref, onMounted, computed} from "vue";
+import {Moon, Opportunity, Sunny} from "@element-plus/icons-vue";
 // 主题状态
 const theme = ref<'light' | 'dark'>('light')
 
+const themeIcon = computed(() =>
+  theme.value === 'light' ? Moon : Sunny
+)
+
 onMounted(() => {
-  const savedTheme = localStorage.getItem('resume-theme') as 'light' | 'dark' || 'light'
-  theme.value = savedTheme
+  theme.value = localStorage.getItem('resume-theme') as 'light' | 'dark' || 'light'
   document.documentElement.setAttribute('data-theme', theme.value)
 })
 
@@ -15,9 +19,19 @@ function toggleTheme() {
   const html = document.documentElement;
   const currentTheme = html.getAttribute('data-theme');
   const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  theme.value = newTheme
   html.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
 }
+
+function prank() {
+  window.scrollTo(0, document.body.scrollHeight);
+  setTimeout(() => {
+    document.body.style.transform = 'rotate(180deg)';
+    document.body.style.transition = '2s';
+  }, 1000);
+}
+
 </script>
 
 <template>
@@ -27,10 +41,13 @@ function toggleTheme() {
       <span class="logo-text" data-text="kokoro">kokoro</span>
     </a>
     <ul class="nav-menu">
-<!--      <li class="nav-item"><a href="/resume" class="nav-link">关于</a></li>-->
+      <li class="nav-item"><a @click="prank()">好东西</a></li>
+      <li class="nav-item"><a href="/resume" target="_blank" class="nav-link">关于</a></li>
       <li class="nav-item">
         <button class="theme-toggle" @click="toggleTheme()">
-          <span class="theme-icon">🌓</span>
+          <el-icon class="theme-icon">
+            <component :is="themeIcon" />
+          </el-icon>
         </button>
       </li>
     </ul>
@@ -45,7 +62,7 @@ function toggleTheme() {
   align-items: center;
   padding: 0 5%;
   height: 60px; /* 固定高度 */
-  background: var(--dark-bg);
+  background: var(--bg-primary);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -64,7 +81,7 @@ function toggleTheme() {
 
 /*左上文字*/
 .logo-text {
-  color: var(--dark);
+  color: var(--text-primary);
   font-family: 'Courier New', monospace;
   font-weight: 700;
   position: relative;
@@ -98,7 +115,7 @@ function toggleTheme() {
 
 /* 导航链接 */
 .nav-link {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
   text-decoration: none;
   padding: 0.5rem 0;
   display: flex;
@@ -108,7 +125,7 @@ function toggleTheme() {
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
+  color: var(--text-primary);
 }
 
 .nav-link::after {
@@ -118,7 +135,7 @@ function toggleTheme() {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--text-primary);
   transition: width 0.3s ease;
 }
 
@@ -148,6 +165,7 @@ function toggleTheme() {
 }
 
 .theme-icon {
+  color: var(--text-primary);
   font-size: 1.2rem;
   transition: transform 0.3s ease;
 }

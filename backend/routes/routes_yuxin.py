@@ -18,11 +18,11 @@ def add_user():
     new_user = YUXINTestUser(
         name=data['name'],
         username=data['username'],
-        password=data['password']  # 注意：实际项目中密码应加密存储！
+        password=data['password']
     )
     db.session.add(new_user)
     db.session.commit()
-    return make_response(201,new_user.id,message='User created')
+    return make_response(200,new_user.id,message='User created')
 
 @yuxin_app.route('/users', methods=['GET'])
 @response_json_wrapper

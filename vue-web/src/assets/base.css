@@ -3,9 +3,9 @@
   --primary: #FF4D4D;
   --secondary: #6B5AED;
   --accent: #2BD2FF;
-  --dark: #F0F4FA;
-  --light: #131720;
-  --gray: #2A3140;
+  --text-primary: #F0F4FA;
+  --bg-primary: #131720;
+  --decoration-border: #2A3140;
 
   /* 动态渐变 */
   --gradient: linear-gradient(
@@ -28,9 +28,9 @@
 
 [data-theme="light"] {
   /* ===== 基础色反转 ===== */
-  --dark: #0B0E15;       /* 深色文本 */
-  --light: #F8FAFC;      /* 浅色背景  */
-  --gray: #CBD5E1;       /* 中间色适配亮背景 */
+  --text-primary: #0B0E15;
+  --bg-primary: #F8FAFC;
+  --decoration-border: #CBD5E1;
 
   /* ===== 主题色动态适配 ===== */
   --primary: #E53E3E;    /* 主色红: 降饱和保持暗色模式基因 */
@@ -62,8 +62,8 @@
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   line-height: 1.6;
-  color: var(--dark);
-  background-color: var(--light);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   min-height: 100vh;
   padding-bottom: 2rem;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -98,7 +98,7 @@ a {
 
 /* 悬停状态 */
 a:hover {
-  color: var(--primary-color); /* 使用主题色 */
+  color: var(--text-primary); /* 使用主题色 */
   text-decoration: underline; /* 可选：悬停时显示下划线 */
 }
 

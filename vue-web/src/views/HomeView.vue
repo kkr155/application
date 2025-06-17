@@ -10,10 +10,10 @@ const modules = [
     glowColor: '#2BD2FF'
   },
   {
-    id: 'yuxin_user',
-    title: 'Api测试',
+    id: 'yuxin-user',
+    title: '雨昕Dev用户',
     icon: 'database',
-    path: '/yuxin_user',
+    path: '/yuxin-user',
     glowColor: '#6B5AED'
   },
   // {
@@ -35,6 +35,7 @@ const modules = [
 
     <nav class="hologram-matrix">
       <router-link
+        target="_blank"
         v-for="module in modules"
         :key="module.id"
         :to="module.path"

@@ -20,15 +20,16 @@ const router = createRouter({
       component: () => import('@/views/ResumeView.vue'),
     },
     {
-      path: '/yuxin_user',
-      name: 'yuxin_user',
+      path: '/yuxin-user',
+      name: 'yuxin-user',
       component: () => import('@/views/YuxinUserView.vue'),
     },
     {
-      path: '/gateway',
-      name: 'gateway',
-      component: () => import('@/views/ChartView.vue'),
-    },
+      path: '/pgyer-manage',
+      name: 'pgyer-manage',
+      component: () => import('@/views/PgyerManageView.vue'),
+    }
+
   ],
 })
 

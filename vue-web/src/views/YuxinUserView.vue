@@ -1,4 +1,7 @@
 <template>
+  <button>
+    <Plus />
+  </button>
   <div class="user-management">
     <!-- 添加用户表单 -->
     <div class="add-user-form">
@@ -56,14 +59,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
-const API_BASE = "https://kokoro.xj.cn/api/yuxin"
-interface User {
-  id: number
-  name: string
-  username: string
-  password: String
-}
+import {Plus} from "@element-plus/icons-vue";
+import {type User, getUsersApi, addUserApi, deleteUserApi} from '@/net/api/yuxin'
+
+
 
 // 用户列表数据
 const users = ref<User[]>([])
@@ -71,12 +70,13 @@ const loading = ref(false)
 const error = ref<string | null>(null)
 
 // 添加用户表单
-const newUser = ref({
+const newUser = ref<User>({
   id: 0,
   name: '',
   username: '',
   password: ''
 })
+
 const isSubmitting = ref(false)
 
 // 删除状态
@@ -88,8 +88,8 @@ const fetchUsers = async () => {
   try {
     loading.value = true
     error.value = null
-    const response = await axios.get(`${API_BASE}/users`)
-    users.value = response.data.data
+    const response = await getUsersApi()
+    users.value = response.data
   } catch (err) {
     error.value = '获取用户列表失败'
     console.error('Error fetching users:', err)
@@ -102,7 +102,7 @@ const fetchUsers = async () => {
 const handleSubmit = async () => {
   try {
     isSubmitting.value = true
-    await axios.post(`${API_BASE}/addUser`, newUser.value)
+    await addUserApi(newUser.value)
     // 清空表单
     newUser.value = { id: 0,name: '', username: '', password: '' }
     // 刷新列表
@@ -121,7 +121,7 @@ const deleteUser = async (id: number) => {
 
   try {
     deletingId.value = id
-    await axios.delete(`${API_BASE}/deleteUser/${id}`)
+    await deleteUserApi(id)
     // 删除成功后更新本地数据
     users.value = users.value.filter(user => user.id !== id)
   } catch (err) {
@@ -143,7 +143,7 @@ onMounted(() => {
 h3 {
   font-size: 1.2rem;
   margin-top: 1rem;
-  color: var(--dark);
+  color: var(--text-primary);
 }
 
 .user-management {
@@ -153,7 +153,7 @@ h3 {
 }
 
 .add-user-form {
-  background: var(--gray);
+  background: var(--decoration-border);
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 30px;
@@ -191,7 +191,7 @@ button:disabled {
 }
 
 .user-list {
-  background: var(--gray);;
+  background: var(--decoration-border);;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -231,5 +231,29 @@ button:disabled {
 
 .empty-state img {
   margin-bottom: 15px;
+}
+
+/* 主题切换按钮 - 浮动效果 */
+.theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-primary);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(30deg);
 }
 </style>

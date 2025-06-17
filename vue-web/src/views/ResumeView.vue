@@ -1,121 +1,28 @@
 <script setup lang="ts">
-
-// 简历数据
-const resumeData = {
-  personalInfo: {
-    name: '张先杰',
-    title: 'Android',
-    avatar: '.jpg',
-    contacts: [
-      { icon: 'fas fa-phone', text: '150-5209-3802' },
-      { icon: 'fas fa-envelope', text: '1473366726@qq.cpm' },
-      { icon: 'fas fa-map-marker-alt', text: '南京 · 中国' }
-    ]
-  },
-  skills: [
-    { name: 'Android(Kotlin/Java)开发', level: 90 },
-    { name: 'Python Flask开发', level: 6 },
-    { name: 'Vue.js/Vue3(html5/css)', level: 4 }
-  ],
- /* languages: [
-    { name: '英语 · 专业八级', level: 90 },
-    { name: '日语 · N1', level: 80 }
-  ],*/
-  profile: '精通企业级（ToB）及消费级（ToC）项目开发，参与过电商、O2O服务、企业管理类系统等高复杂度项目。擅长Kotlin语言开发，具备从0到1架构设计能力，熟悉MVC/MVP/MVVM模式选型与落地。核心能力：\n' +
-    '▸ 性能优化专家：深度掌握内存泄漏治理（Java GC机制/内存模型）、启动速度优化（冷热启动分级策略）、布局渲染（层级压缩/异步加载）及APK瘦身（资源混淆/动态加载）\n' +
-    '▸ 系统级开发能力：精通Android消息机制（Handler/Looper）、事件分发体系（冲突解决策略）、自定义View开发（沉浸式/协调者布局）及多版本适配（Android 5-14特性适配）\n' +
-    '▸ 工程化实践：搭建标准化网络框架（TCP长连接/协议栈封装，SDK模块化输出至GitHub），主导Gradle构建优化（Flavor多环境配置/Task自动化打包），C++混合开发（CMake/JNI集成）\n' +
-    '▸ 全链路闭环经验：第三方服务集成（微信支付/环信IM）、性能监控（App Inspection工具链）、应用商店上架（小米/华为等平台合规流程）',
-  experiences: [
-    {
-      period: '2024.12 - 至今',
-      company: '江苏小拉科技有限公司',
-      position: 'Android 开发',
-      items: [
-        '需求评审，参与需求会议',
-        '针对程序进行优化：\n 1、架构分离打包,apk大小减小20%；\n 2、基于buildTypes的环境分离与基于task的批量打包，上架效率提升40%',
-        '基于需求迭代旧代码旧功能',
-        '基于需求进行版本迭代',
-        "负责上架小米、华为、oppo、vivo、应用宝 商店"
-      ]
-    },
-    {
-      period: '2022.3 - 2024.10',
-      company: '北京光速斑马数据科技有限公司',
-      position: 'Android 开发',
-      items: [
-        '需求评审，参与版本需求会议， 确认改进方案， 提供改进建议',
-        '业务处理，完成自己负责的业务相关代码',
-        'UI绘制，负责项目中复杂布局的自定义绘制',
-        '技术革新与优化，替换掉某些已经过期到马上被移除的方法'
-      ]
-    },
-    {
-      period: '2021.10 - 2022.1）',
-      company: '北京开阳创和科技有限公司',
-      position: 'Android 开发',
-      items: [
-        '负责驻场公司（中国航天科工二院）的技术选型及UI设计',
-        '编写项目日志以及交接材料',
-        '根据甲方需求进行迭代及各项适配',
-        '配合甲方进行项目测试'
-      ]
-    },
-    {
-      period: '2018.8 - 2021.10',
-      company: '百灵传播(北京)科技有限公司',
-      position: 'Android 开发',
-      items: [
-        '参与产品需求分析，确定产品方案',
-        '负责架构搭建及框架技术选型',
-        '负责完整项目的独立编写并撰写 md 文档',
-        '根据客户要求完成功能定制并进行性能优化与兼容,降低崩溃率',
-        '后期完成项目新增需求改动和 bug 修改，确保产品具有优质的用户体验与良好的兼容性 '
-      ]
-    }
-  ],
-  education: {
-    period: '2014.09 – 2018.07',
-    school: '三江学院',
-    major: '计算机科学与技术 · 本科',
-    items: [
-    ]
-  },
-  projects: [
-    {
-      title: '雨欣智慧',
-      description: '一款toB APP，针对于丙肝领域，基本涵盖了医疗的整体流程，问诊、开药、入库及' +
-        '售后、数据统计，除此之外 还有针对医生的目标管理、项目管理。 ',
-      tags: ['医疗', 'old项目', '维护', '复杂布局']
-    },
-    {
-      title: '星火除虫',
-      description: '一款toB APP，类似美团骑手端，对除虫师考勤，服务 管理，包括完整接单流程，位' +
-        '置持续监听。',
-      tags: ['服务管理', 'toB', '除虫师骑手端', '架构搭建', '保活']
-    },
-    {
-      title: '小年鱼',
-      description: '电商，卖莆田货。',
-      tags: ['电商', 'toC', '经典', '部分开发']
-    },
-    {
-      title: '点到',
-      description: '点到是一款 O2O 服务类 App。 \n' +
-        'App 可以根据用户提供的定位来为用户提供距离最近的医师，并且可以定点预约。',
-      tags: ['生活服务', 'OtoO', '部分开发']
-    },
-    {
-      title: '资产管理系统',
-      description: '运行在特定的pos机，主要是对货物流水进行盘点用。',
-      tags: ['后勤管理', '盘点', '政府项目', '从零到一']
-    }
-  ]
+import {onMounted, ref} from "vue";
+import {getResumeDataApi, type ResumeData} from "@/net/api/resume.ts";
+// 获取简历数据
+const getResumeData = async () => {
+  try {
+    const response = await getResumeDataApi()
+    resumeData.value = response.data
+  } catch (err) {
+    console.error('Error fetching users:', err)
+  } finally {
+  }
 }
+
+
+onMounted(() => {
+  getResumeData()
+})
+// 简历数据
+const resumeData = ref<ResumeData>()
+
 </script>
 
 <template>
-  <div class="resume-container">
+  <div class="resume-container" v-if="resumeData">
 
 
     <div class="resume">
@@ -232,7 +139,7 @@ const resumeData = {
 
 /* 左侧边栏 - 立体卡片效果 */
 .sidebar {
-  background: var(--light);
+  background: var(--bg-primary);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-lg);
@@ -324,7 +231,7 @@ const resumeData = {
 .card h2 {
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
-  color: var(--dark);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
 }
@@ -377,7 +284,7 @@ const resumeData = {
 
 .skill-bar {
   height: 8px;
-  background: var(--gray);
+  background: var(--decoration-border);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
@@ -409,7 +316,7 @@ const resumeData = {
 }
 
 .section {
-  background: var(--light);
+  background: var(--bg-primary);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-md);
@@ -457,7 +364,7 @@ const resumeData = {
   top: 10px;
   bottom: 10px;
   width: 2px;
-  background: var(--gray);
+  background: var(--decoration-border);
   transform: translateZ(-10px);
 }
 
@@ -468,7 +375,7 @@ const resumeData = {
   background: rgba(255,255,255,0.05);
   border-radius: var(--radius-md);
   transition: all 0.3s ease;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--decoration-border);
 }
 
 .timeline-item:hover {
@@ -486,7 +393,7 @@ const resumeData = {
   height: 12px;
   border-radius: 50%;
   background: var(--gradient);
-  border: 2px solid var(--light);
+  border: 2px solid var(--bg-primary);
   z-index: 1;
 }
 
@@ -500,7 +407,7 @@ const resumeData = {
 .timeline-title {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
-  color: var(--dark);
+  color: var(--text-primary);
 }
 
 .timeline-title span {
@@ -509,7 +416,7 @@ const resumeData = {
 }
 
 .timeline-desc {
-  color: var(--dark);
+  color: var(--text-primary);
   opacity: 0.9;
   white-space: pre-line;
 }
@@ -536,11 +443,11 @@ const resumeData = {
 }
 
 .project-card {
-  background: var(--light);
+  background: var(--bg-primary);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--gray);
+  border: 1px solid var(--decoration-border);
   transition: all 0.3s ease;
 }
 
@@ -564,7 +471,7 @@ const resumeData = {
 }
 
 .project-card p {
-  color: var(--dark);
+  color: var(--text-primary);
   opacity: 0.9;
   font-size: 0.95rem;
   margin-bottom: 1rem;

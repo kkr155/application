@@ -31,16 +31,7 @@ with app.app_context():
 # 注册全局处理器
 register_handlers(app)
 CORS(app)
-# CORS(app, resources={
-#     r"/api/*": {
-#         "origins": "http://localhost:5000",
-#         "methods": ["GET", "POST", "DELETE", "PUT"],  # 明确允许DELETE
-# "allow_headers": ["Content-Type"]
-#     }
-# })
 
-# def run_flask():
-#     app.run(host='0.0.0.0', port=5000, debug=False)
 
 
 if __name__ == '__main__':

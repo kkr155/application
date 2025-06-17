@@ -4,8 +4,9 @@ from flask import Blueprint, render_template, jsonify, send_file, send_from_dire
 
 from werkzeug.utils import secure_filename
 
+from backend.net.template.resume import zhangxianjie_resume
 from backend.utils.path_util import static_dir
-from backend.net.routes_decorator import response_json_wrapper
+from backend.net.routes_decorator import response_json_wrapper, make_response
 
 main_app = Blueprint('main', __name__, url_prefix='/api')
 
@@ -15,12 +16,6 @@ main_app = Blueprint('main', __name__, url_prefix='/api')
 @main_app.route('/', methods=['GET'])
 def index():
     return render_template("index.html")
-
-
-# 简历
-@main_app.route('/resume')
-def resume():
-    return render_template('resume.html')
 
 
 # 分发
@@ -156,6 +151,13 @@ def upload_hotfix():
             "status": "error",
             "error": str(e)
         }), 500
+
+@response_json_wrapper
+@main_app.route('/resume/<name>', methods=['GET'])
+def resume(name):
+    if name == "张先杰":
+        return  make_response(200, zhangxianjie_resume, message='success')
+    else: return  make_response(404, None, message='改名称对应的简历不存在')
 
 
 
