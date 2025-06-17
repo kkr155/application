@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/pgyer-manage',
       name: 'pgyer-manage',
       component: () => import('@/views/PgyerManageView.vue'),
+    },
+    {
+      path: '/dongyijie',
+      name: 'dongyijie',
+      component: () => import('@/views/DongyijieView.vue'),
     }
 
   ],

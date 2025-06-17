@@ -4,13 +4,16 @@ import NavigationBar from '@/components/NavigationBar.vue'
 import CopyRight from '@/components/CopyRight.vue'
 </script>
 <template>
-  <div class="app-container">
-    <NavigationBar />
-    <main class="content">
-      <RouterView />
-    </main>
-    <CopyRight />
-  </div>
+    <div class="scrollbar-demo-item">
+      <NavigationBar />
+      <main class="content">
+        <RouterView />
+      </main>
+      <CopyRight />
+    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
+
+

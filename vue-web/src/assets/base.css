@@ -4,6 +4,7 @@
   --secondary: #6B5AED;
   --accent: #2BD2FF;
   --text-primary: #F0F4FA;
+  --text-secondary: #666;
   --bg-primary: #131720;
   --decoration-border: #2A3140;
 
@@ -27,15 +28,13 @@
 }
 
 [data-theme="light"] {
-  /* ===== 基础色反转 ===== */
+  --primary: #E53E3E;    /* 主色红*/
+  --secondary: #6366F1; /* 辅色紫 */
+  --accent: #00A3FF;    /* 强调色蓝 */
   --text-primary: #0B0E15;
+  --text-secondary: #666;
   --bg-primary: #F8FAFC;
   --decoration-border: #CBD5E1;
-
-  /* ===== 主题色动态适配 ===== */
-  --primary: #E53E3E;    /* 主色红: 降饱和保持暗色模式基因 */
-  --secondary: #6366F1; /* 辅色紫: 微调色相适配亮背景 */
-  --accent: #00A3FF;    /* 强调色蓝: 提升饱和增强引导性 */
 
   --gradient: linear-gradient(
     135deg,
@@ -106,3 +105,5 @@ a:hover {
 a:visited {
   color: inherit; /* 保持与默认状态一致 */
 }
+
+

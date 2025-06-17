@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button class="fixed-toggle">
     <Plus />
   </button>
   <div class="user-management">
@@ -19,7 +19,7 @@
           <label for="password">密码</label>
           <input v-model="newUser.password" type="password" id="password" required>
         </div>
-        <button type="submit" :disabled="isSubmitting">
+        <button class="add-btn" type="submit" :disabled="isSubmitting">
           {{ isSubmitting ? '提交中...' : '添加用户' }}
         </button>
       </form>
@@ -176,19 +176,7 @@ input {
   border-radius: 4px;
 }
 
-button {
-  padding: 8px 15px;
-  background: #42b983;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
 
 .user-list {
   background: var(--decoration-border);;
@@ -221,39 +209,20 @@ button:disabled {
 }
 
 .username {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9em;
 }
 
+.add-btn {
+  background: var(--secondary);
+}
+
 .delete-btn {
-  background: #ff4757;
+  background: var(--primary);
 }
 
 .empty-state img {
   margin-bottom: 15px;
 }
 
-/* 主题切换按钮 - 浮动效果 */
-.theme-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--gradient);
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-primary);
-  z-index: 100;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1) rotate(30deg);
-}
 </style>

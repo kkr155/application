@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {ref, onMounted, computed} from "vue";
-import {Moon, Opportunity, Sunny} from "@element-plus/icons-vue";
+import {Moon, Sunny} from "@element-plus/icons-vue";
 // 主题状态
 const theme = ref<'light' | 'dark'>('light')
 
@@ -24,14 +24,6 @@ function toggleTheme() {
   localStorage.setItem('theme', newTheme);
 }
 
-function prank() {
-  window.scrollTo(0, document.body.scrollHeight);
-  setTimeout(() => {
-    document.body.style.transform = 'rotate(180deg)';
-    document.body.style.transition = '2s';
-  }, 1000);
-}
-
 </script>
 
 <template>
@@ -41,7 +33,6 @@ function prank() {
       <span class="logo-text" data-text="kokoro">kokoro</span>
     </a>
     <ul class="nav-menu">
-      <li class="nav-item"><a @click="prank()">好东西</a></li>
       <li class="nav-item"><a href="/resume" target="_blank" class="nav-link">关于</a></li>
       <li class="nav-item">
         <button class="theme-toggle" @click="toggleTheme()">
