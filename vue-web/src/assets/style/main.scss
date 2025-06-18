@@ -1,0 +1,29 @@
+@use 'variables' as *;
+@use 'mixins';
+@use 'animations';
+
+:root {
+  @each $name, $color in $colors {
+    --#{$name}: #{$color};
+  }
+
+  --gradient: linear-gradient(
+      135deg,
+      var(--primary) 0%,
+      var(--secondary) 100%
+  );
+}
+
+@include mixins.theme("light") {
+  --primary: #E53E3E;
+  --secondary: #6366F1;
+  /*...其他覆盖...*/
+}
+
+.content_show {
+  h1 {
+    @include mixins.media("md") {
+      font-size: 2.5rem;
+    }
+  }
+}

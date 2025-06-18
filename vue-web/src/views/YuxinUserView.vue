@@ -1,7 +1,29 @@
 <template>
-  <button class="fixed-toggle">
+  <button class="fixed-toggle" @click="visible = true">
     <Plus />
   </button>
+  <el-dialog v-model="visible" title="添加用户" width="500">
+    <el-form :model="newUser">
+      <el-form-item label="名字(用以区分是谁的账号)" :label-width="140">
+        <el-input v-model="newUser.name" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="账号" :label-width="140">
+        <el-input v-model="newUser.username" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="密码" :label-width="140">
+        <el-input v-model="newUser.password" autocomplete="off" />
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <div class="dialog-footer">
+        <el-button class="delete-btn" type="primary" @click="visible = false">取消</el-button>
+        <el-button class="add-btn" type="primary" @click="visible = false">
+          添加用户
+        </el-button>
+      </div>
+    </template>
+  </el-dialog>
+
   <div class="user-management">
     <!-- 添加用户表单 -->
     <div class="add-user-form">
@@ -39,17 +61,17 @@
 
       <!-- 用户列表 -->
       <ul v-else>
-        <li v-for="user in users" :key="user.id" class="user-item">
+        <li v-for="user in users" :key="user.user_id" class="user-item">
           <div class="user-info">
             <span class="name">{{ user.name }}</span>
             <span class="username">@{{ user.username }}</span>
           </div>
           <button
-            @click="deleteUser(user.id)"
+            @click="deleteUser(user.user_id)"
             class="delete-btn"
-            :disabled="deletingId === user.id"
+            :disabled="deletingId === user.user_id"
           >
-            {{ deletingId === user.id ? '删除中...' : '删除' }}
+            {{ deletingId === user.user_id ? '删除中...' : '删除' }}
           </button>
         </li>
       </ul>
@@ -63,7 +85,8 @@ import {Plus} from "@element-plus/icons-vue";
 import {type User, getUsersApi, addUserApi, deleteUserApi} from '@/net/api/yuxin'
 
 
-
+//添加用户弹窗的状态
+const visible = ref(false)
 // 用户列表数据
 const users = ref<User[]>([])
 const loading = ref(false)
@@ -71,7 +94,7 @@ const error = ref<string | null>(null)
 
 // 添加用户表单
 const newUser = ref<User>({
-  id: 0,
+  user_id: 0,
   name: '',
   username: '',
   password: ''
@@ -104,7 +127,7 @@ const handleSubmit = async () => {
     isSubmitting.value = true
     await addUserApi(newUser.value)
     // 清空表单
-    newUser.value = { id: 0,name: '', username: '', password: '' }
+    newUser.value = { user_id: 0,name: '', username: '', password: '' }
     // 刷新列表
     await fetchUsers()
   } catch (err) {
@@ -123,7 +146,7 @@ const deleteUser = async (id: number) => {
     deletingId.value = id
     await deleteUserApi(id)
     // 删除成功后更新本地数据
-    users.value = users.value.filter(user => user.id !== id)
+    users.value = users.value.filter(user => user.user_id !== id)
   } catch (err) {
     error.value = '删除用户失败'
     console.error('Error deleting user:', err)

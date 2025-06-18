@@ -3,7 +3,7 @@ import request from '@/net/utils/request.js'
 import type { ApiResponse } from '@/types/api'
 
 export interface User {
-  id: number
+  user_id: number
   name: string
   username: string
   password: String
