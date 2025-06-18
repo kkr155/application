@@ -4,11 +4,9 @@ from backend.net.models import YUXINTestUser
 from backend.net.routes_decorator import make_response, response_json_wrapper
 from flask import Blueprint,request
 
-yuxin_app = Blueprint('yuxin', __name__, url_prefix='/api/yuxin')
-
-
+yuxin_api = Blueprint('yuxin', __name__, url_prefix='/api/yuxin')
 # 添加用户
-@yuxin_app.route('/addUser', methods=['POST'])
+@yuxin_api.route('/addUser', methods=['POST'])
 @response_json_wrapper
 def add_user():
     data = request.get_json()
@@ -24,12 +22,12 @@ def add_user():
     db.session.commit()
     return make_response(200,new_user.id,message='User created')
 
-@yuxin_app.route('/users', methods=['GET'])
+@yuxin_api.route('/users', methods=['GET'])
 @response_json_wrapper
 def get_users():
     users = YUXINTestUser.query.all()
     user_list = [{
-        'id': user.id,
+        'id': user.user_id,
         'name': user.name,
         'username': user.username,
         'password': user.password,
@@ -37,7 +35,7 @@ def get_users():
     return make_response(200, user_list, message='User list retrieved')
 
 
-@yuxin_app.route('/deleteUser/<int:user_id>', methods=['DELETE'])
+@yuxin_api.route('/deleteUser/<int:user_id>', methods=['DELETE'])
 @response_json_wrapper
 def delete_user(user_id):
     user = YUXINTestUser.query.get(user_id)

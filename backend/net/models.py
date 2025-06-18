@@ -17,7 +17,18 @@ class Note(db.Model):
 class YUXINTestUser(db.Model):
     __bind_key__ = 'yuxin'
     __tablename__ = 'yuxin_user'
-    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
-    username = db.Column(db.String(80), nullable=False)
+    username = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
+
+class PgyerConfig(db.Model):
+    __bind_key__ = 'config'
+    __tablename__ = 'pgyer_config'
+    __table_args__ = (
+        db.UniqueConstraint('apikey', 'appkey', name='uix_apiKey_appKey'),  # 名称+API Key组合唯一
+    )
+    config_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False, unique=True) #描述名称
+    apikey = db.Column(db.String(80), nullable=False)
+    appkey = db.Column(db.String(80), nullable=False)

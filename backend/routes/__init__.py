@@ -1,1 +1,1 @@
-__all__ = ['routes_main', 'routes_yuxin']  # 允许导出的模块
+from . import routes_pgyer,routes_yuxin,routes_main
