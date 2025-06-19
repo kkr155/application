@@ -14,11 +14,13 @@ def add_config():
      new_config = PgyerConfig(
         name=data['name'],
         apikey=data['apikey'],
-        appkey=data['appkey']
+        appkey=data['appkey'],
+         buildBuildVersion=0,
+         downloadURL=""
      )
      db.session.add(new_config)
      db.session.commit()
-     return make_response(200,new_config.id,message='Config created')
+     return make_response(200,new_config.config_id,message='Config created')
 
 @pgyer_api.route('/configs', methods=['GET'])
 @response_json_wrapper

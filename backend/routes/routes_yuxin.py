@@ -20,14 +20,14 @@ def add_user():
     )
     db.session.add(new_user)
     db.session.commit()
-    return make_response(200,new_user.id,message='User created')
+    return make_response(200,new_user.user_id,message='User created')
 
 @yuxin_api.route('/users', methods=['GET'])
 @response_json_wrapper
 def get_users():
     users = YUXINTestUser.query.all()
     user_list = [{
-        'id': user.user_id,
+        'user_id': user.user_id,
         'name': user.name,
         'username': user.username,
         'password': user.password,

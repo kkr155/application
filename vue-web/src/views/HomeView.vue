@@ -16,13 +16,13 @@ const modules = [
     path: '/yuxin-user',
     glowColor: '#6B5AED'
   },
-  // {
-  //   id: 'gateway',
-  //   title: '饼图预览',
-  //   icon: 'portal',
-  //   path: '/gateway',
-  //   glowColor: '#FF4D4D'
-  // }
+  {
+    id: 'pgyer-manage',
+    title: 'Apk管理',
+    icon: 'portal',
+    path: '/pgyer-manage',
+    glowColor: '#FF4D4D'
+  }
 ]
 
 </script>

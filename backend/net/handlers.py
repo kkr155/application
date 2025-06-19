@@ -1,3 +1,4 @@
+import re
 import traceback
 from http.client import HTTPException
 
@@ -40,10 +41,13 @@ def register_handlers(app):
         if isinstance(e, (ValueError, BadRequest)):
             # 客户端输入错误 (400)
             return make_response(400, None,"请求参数不合法")
-
         elif isinstance(e, HTTPException):
             return make_response( e.code,None,e.name)
-
+        elif match := re.search(r"UNIQUE constraint failed: (\w+)\.(\w+)", str(e)):
+            field = match.group(2)  # 直接获取字段名
+            return make_response(400, None, f'{field}已存在')
+        elif "FOREIGN KEY constraint failed" in str(e):
+            return make_response(400, None, '关联数据不存在')
         else:
             # 未处理的服务器内部错误 (500)
             app.logger.error(f"Unhandled Exception: {str(e)}\n{traceback.format_exc()}")

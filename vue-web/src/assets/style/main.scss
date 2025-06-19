@@ -1,5 +1,7 @@
 @use 'variables' as *;
-@use 'mixins';
+@use 'mixins' with (
+  $breakpoints: $breakpoints // 显式传递变量
+);
 @use 'animations';
 
 :root {
@@ -17,7 +19,7 @@
 @include mixins.theme("light") {
   --primary: #E53E3E;
   --secondary: #6366F1;
-  /*...其他覆盖...*/
+
 }
 
 .content_show {

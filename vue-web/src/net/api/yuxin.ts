@@ -25,9 +25,9 @@ export const addUserApi = (data:User):Promise<ApiResponse<number>> => {
   })
 }
 
-export const deleteUserApi = (id:number):Promise<ApiResponse<unknown>> => {
+export const deleteUserApi = (user_id:number):Promise<ApiResponse<unknown>> => {
   return request({
-    url: `/yuxin/deleteUser/${id}`,
+    url: `/yuxin/deleteUser/${user_id}`,
     method: 'delete',
   })
 }

@@ -32,15 +32,12 @@ from backend.routes.routes_pgyer import pgyer_api as pgyer_routes
 app.register_blueprint(pgyer_routes)
 
 
-
 with app.app_context():
     db.create_all()
 
 # 注册全局处理器
 register_handlers(app)
 CORS(app)
-
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

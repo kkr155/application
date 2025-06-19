@@ -32,3 +32,6 @@ class PgyerConfig(db.Model):
     name = db.Column(db.String(80), nullable=False, unique=True) #描述名称
     apikey = db.Column(db.String(80), nullable=False)
     appkey = db.Column(db.String(80), nullable=False)
+    buildBuildVersion = db.Column(db.Integer, nullable=False)
+    downloadURL = db.Column(db.String(80), nullable=False)
+

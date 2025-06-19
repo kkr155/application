@@ -2,51 +2,29 @@
   <button class="fixed-toggle" @click="visible = true">
     <Plus />
   </button>
-  <el-dialog v-model="visible" title="添加用户" width="500">
-    <el-form :model="newUser">
-      <el-form-item label="名字(用以区分是谁的账号)" :label-width="140">
-        <el-input v-model="newUser.name" autocomplete="off" />
-      </el-form-item>
-      <el-form-item label="账号" :label-width="140">
-        <el-input v-model="newUser.username" autocomplete="off" />
-      </el-form-item>
-      <el-form-item label="密码" :label-width="140">
-        <el-input v-model="newUser.password" autocomplete="off" />
-      </el-form-item>
-    </el-form>
-    <template #footer>
-      <div class="dialog-footer">
-        <el-button class="delete-btn" type="primary" @click="visible = false">取消</el-button>
-        <el-button class="add-btn" type="primary" @click="visible = false">
-          添加用户
-        </el-button>
+  <!-- 添加用户表单 -->
+  <Dialog v-if="visible" @click.self="visible = false">
+    <h2>添加用户</h2>
+    <form @submit.prevent="handleSubmit">
+      <div class="form-group">
+        <label for="name">名字(用以区分是谁的账号)</label>
+        <input v-model="newUser.name" type="text" id="name" required>
       </div>
-    </template>
-  </el-dialog>
+      <div class="form-group">
+        <label for="username">账号</label>
+        <input v-model="newUser.username" type="text" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">密码</label>
+        <input v-model="newUser.password" type="password" id="password" required>
+      </div>
+      <button class="add-btn" type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? '提交中...' : '添加用户' }}
+      </button>
+    </form>
+  </Dialog>
 
-  <div class="user-management">
-    <!-- 添加用户表单 -->
-    <div class="add-user-form">
-      <h2>添加用户</h2>
-      <form @submit.prevent="handleSubmit">
-        <div class="form-group">
-          <label for="name">名字(用以区分是谁的账号)</label>
-          <input v-model="newUser.name" type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="username">账号</label>
-          <input v-model="newUser.username" type="text" id="username" required>
-        </div>
-        <div class="form-group">
-          <label for="password">密码</label>
-          <input v-model="newUser.password" type="password" id="password" required>
-        </div>
-        <button class="add-btn" type="submit" :disabled="isSubmitting">
-          {{ isSubmitting ? '提交中...' : '添加用户' }}
-        </button>
-      </form>
-    </div>
-
+  <div  class="user-management">
     <!-- 用户列表 -->
     <div class="user-list">
       <h2>用户列表</h2>
@@ -83,7 +61,8 @@
 import { ref, onMounted } from 'vue'
 import {Plus} from "@element-plus/icons-vue";
 import {type User, getUsersApi, addUserApi, deleteUserApi} from '@/net/api/yuxin'
-
+import Dialog from "@/views/Dialog/Dialog.vue";
+import { ElMessage } from 'element-plus'
 
 //添加用户弹窗的状态
 const visible = ref(false)
@@ -91,6 +70,7 @@ const visible = ref(false)
 const users = ref<User[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
+
 
 // 添加用户表单
 const newUser = ref<User>({
@@ -125,28 +105,34 @@ const fetchUsers = async () => {
 const handleSubmit = async () => {
   try {
     isSubmitting.value = true
-    await addUserApi(newUser.value)
-    // 清空表单
-    newUser.value = { user_id: 0,name: '', username: '', password: '' }
-    // 刷新列表
-    await fetchUsers()
+    const response = await addUserApi(newUser.value)
+    if (response.code == 200){
+      visible.value = false
+      // 清空表单
+      newUser.value = { user_id: 0,name: '', username: '', password: '' }
+      // 刷新列表
+      await fetchUsers()
+    }else{
+      ElMessage.error(response.message)
+    }
+
   } catch (err) {
+    console.error('Error Add User:', err)
     error.value = '添加用户失败'
-    console.error('Error adding user:', err)
   } finally {
     isSubmitting.value = false
   }
 }
 
 // 删除用户
-const deleteUser = async (id: number) => {
+const deleteUser = async (user_id: number) => {
   if (!confirm('确定要删除这个用户吗？')) return
 
   try {
-    deletingId.value = id
-    await deleteUserApi(id)
+    deletingId.value = user_id
+    await deleteUserApi(user_id)
     // 删除成功后更新本地数据
-    users.value = users.value.filter(user => user.user_id !== id)
+    users.value = users.value.filter(user => user.user_id !== user_id)
   } catch (err) {
     error.value = '删除用户失败'
     console.error('Error deleting user:', err)
@@ -173,13 +159,6 @@ h3 {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-}
-
-.add-user-form {
-  background: var(--decoration-border);
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
 }
 
 .form-group {
