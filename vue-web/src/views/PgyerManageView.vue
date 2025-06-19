@@ -189,8 +189,8 @@ onMounted(() => {
           <div class="user-info">
             <span class="name">{{ config.name }}</span>
             <span class="minor" v-if="config.buildBuildVersion != null && config.buildBuildVersion.trim() !== ''">蒲公英构建版本：{{ config.buildBuildVersion }}</span>
-            <span class="minor" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">构建表述</span>
-            <span class="detail" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">{{ config.buildUpdateDescription }}</span>
+            <span class="minor" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">构建描述</span>
+            <pre class="detail" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">{{ config.buildUpdateDescription }}</pre>
             <button class="add-btn" v-if="config.downloadURL != null && config.downloadURL.trim() !== ''" @click="downloadFile(config.downloadURL,config.buildFileKey ??'yuxinzhihui.apk')">
               下载
             </button>
@@ -260,9 +260,11 @@ input {
   margin: 20px auto 0 auto;
   padding: 20px;
   border-bottom: 1px solid #eee;
+  gap: 6px;
 }
 
 .user-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -278,6 +280,9 @@ input {
 }
 
 .detail {
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-width: 100%;
   margin-left: 20px;
   color: var(--text-primary);
   font-size: 0.85em;

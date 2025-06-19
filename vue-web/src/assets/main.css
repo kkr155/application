@@ -30,6 +30,7 @@
 }
 
 button {
+  width: fit-content;
   padding: 8px 15px;
   background: var(--gradient);
   color: #F0F4FA;

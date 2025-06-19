@@ -3,14 +3,14 @@
 import {ref, onMounted, computed} from "vue";
 import {Moon, Sunny} from "@element-plus/icons-vue";
 // 主题状态
-const theme = ref<'light' | 'dark'>('light')
+const theme = ref<'light' | 'dark'>('dark')
 
 const themeIcon = computed(() =>
   theme.value === 'light' ? Moon : Sunny
 )
 
 onMounted(() => {
-  theme.value = localStorage.getItem('resume-theme') as 'light' | 'dark' || 'light'
+  theme.value = localStorage.getItem('theme') as 'light' | 'dark' || 'dark'
   document.documentElement.setAttribute('data-theme', theme.value)
 })
 
