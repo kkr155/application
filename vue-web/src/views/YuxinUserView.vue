@@ -178,6 +178,11 @@ input {
   border-radius: 4px;
 }
 
+@media (max-width: 768px) {
+  input {
+    max-width: 80vw
+  }
+}
 
 
 .user-list {

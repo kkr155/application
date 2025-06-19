@@ -42,4 +42,13 @@
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@media (max-width: 768px) {
+  .modal-window {
+    max-width: 100%; /* 双重保险 */
+    padding: 16px;
+    border-radius: 12px; /* 更大圆角更符合移动端风格 */
+    max-height: 80vh; /* 更严格的高度限制 */
+  }
+}
 </style>

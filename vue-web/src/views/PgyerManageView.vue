@@ -89,14 +89,50 @@ const deleteConfig = async (config_id: number) => {
 }
 
 const downloadFile = (url: string, fileName: string = "app.apk") => {
-  const a = document.createElement("a");
+  // 1. 创建唯一ID防止重复
+  const downloadId = `download-${Date.now()}`;
+  const a = document.createElement('a');
+  a.id = downloadId;
+
+  // 2. 设置下载属性（兼容移动端）
   a.href = url;
-  a.download = fileName; // 设置下载文件名
-  a.style.display = "none";
+  a.download = fileName;
+  a.style.display = 'none';
+  a.target = '_blank'; // 解决iOS限制
+
+  // 3. 清理历史节点
+  const oldNodes = document.querySelectorAll('a[id^="download-"]');
+  oldNodes.forEach(node => document.body.removeChild(node));
+
+  // 4. 事件监听改进
+  const cleanup = () => {
+    a.removeEventListener('click', cleanup);
+    a.removeEventListener('error', cleanup);
+    setTimeout(() => {
+      document.body.removeChild(a);
+      if (url.startsWith('blob:')) URL.revokeObjectURL(url);
+    }, 1000);
+  };
+
+  a.addEventListener('click', cleanup);
+  a.addEventListener('error', cleanup);
+
+  // 5. 触发下载（兼容所有浏览器）
   document.body.appendChild(a);
-  a.click(); // 触发浏览器下载
-  document.body.removeChild(a);
+
+  if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+    // iOS特殊处理
+    window.open(url, '_blank');
+  } else {
+    const event = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    });
+    a.dispatchEvent(event);
+  }
 };
+
 // 初始化加载数据
 onMounted(() => {
   fetchConfigs()
@@ -195,7 +231,11 @@ input {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
+@media (max-width: 768px) {
+  input {
+    max-width: 80vw
+  }
+}
 .user-list {
   padding: 20px;
   border-radius: 8px;
