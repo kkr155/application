@@ -28,11 +28,11 @@
 
 
 .modal-window {
+  width: auto;
   background: var(--decoration-border);
   padding: 20px;
   border-radius: 8px;
   max-width: 600px;
-  width: 90%;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   animation: fadeIn 0.3s ease;
 }

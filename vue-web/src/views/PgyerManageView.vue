@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { Plus } from '@element-plus/icons-vue'
+import {Plus} from '@element-plus/icons-vue'
 import {onMounted, ref} from 'vue'
 import Dialog from '@/views/Dialog/Dialog.vue'
 import {
   addConfigApi, checkVersionApi,
   type Config,
-  deleteConfigApi, downApkApi,
+  deleteConfigApi,
   getConfigsApi,
 } from '@/net/api/pgyer.ts'
 import { ElMessage } from 'element-plus'
-
-const visible = ref(false)
+import qr from '@/assets/pgyer-manage-qr.png';
+const addUserDialogVisible = ref(false)
+const qrCodeVisible = ref(false)
 const loading = ref(false)
 const error = ref<string | null>(null)
 const isSubmitting = ref(false)
@@ -54,7 +55,7 @@ const handleSubmit = async () => {
     isSubmitting.value = true
     const response = await addConfigApi(newConfig.value)
     if (response.code == 200) {
-      visible.value = false
+      addUserDialogVisible.value = false
       // 清空表单
       newConfig.value = { config_id: 0, name: '', apikey: '', appkey: '' }
       // 刷新列表
@@ -103,10 +104,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <button class="fixed-toggle" @click="visible = true">
+  <button class="fixed-toggle" @click="addUserDialogVisible = true">
     <Plus />
   </button>
-  <Dialog v-if="visible" @click.self="visible = false">
+  <button class="fixed-toggle-secondary" @click="qrCodeVisible = true">
+    <img :src="qr" alt="Logo" class="auto-shrink-img">
+  </button>
+  <Dialog v-if="qrCodeVisible" @click.self="qrCodeVisible = false">
+    <img :src="qr" alt="Logo" class="auto-shrink-img-detail">
+  </Dialog >
+  <Dialog v-if="addUserDialogVisible" @click.self="addUserDialogVisible = false">
     <h2>添加新配置</h2>
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
@@ -183,7 +190,7 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 400px;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -249,5 +256,16 @@ input {
 }
 .empty-state img {
   margin-bottom: 15px;
+}
+.auto-shrink-img {
+  width: 24px;       /* 设置目标宽度 */
+  height: 24px;      /* 设置目标高度 */
+  object-fit: contain; /* 保持比例，完整显示图片 */
+}
+
+.auto-shrink-img-detail{
+  width: 200px;       /* 设置目标宽度 */
+  height: 200px;      /* 设置目标高度 */
+  object-fit: contain; /* 保持比例，完整显示图片 */
 }
 </style>
