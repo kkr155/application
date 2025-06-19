@@ -199,3 +199,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+dist
+*dist
