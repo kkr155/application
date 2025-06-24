@@ -37,6 +37,7 @@ def register_handlers(app):
     @app.errorhandler(Exception)
     @response_json_wrapper
     def handle_exception(e):
+        print(f"Unhandled Exception: {str(e)}\n{traceback.format_exc()}")
         # 分类处理不同异常类型
         if isinstance(e, (ValueError, BadRequest)):
             # 客户端输入错误 (400)

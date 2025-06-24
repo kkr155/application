@@ -196,13 +196,13 @@ onMounted(() => {
             </button>
           </div>
 
-          <button
+<!--          <button
             @click="deleteConfig(config.config_id)"
             class="delete-btn"
             :disabled="deletingId === config.config_id"
           >
             {{ deletingId === config.config_id ? '删除中...' : '删除' }}
-          </button>
+          </button>-->
         </li>
       </ul>
     </div>

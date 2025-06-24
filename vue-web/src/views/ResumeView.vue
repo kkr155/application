@@ -51,7 +51,7 @@ const resumeData = ref<ResumeData>()
               <span>{{ skill.name }}</span>
               <span>{{ skill.level }}%</span>
             </div>
-            <div class="skill-bar">
+            <div class="skill-bar">·
               <div class="skill-level" :style="{ width: `${skill.level}%` }"></div>
             </div>
           </div>
@@ -309,7 +309,7 @@ const resumeData = ref<ResumeData>()
   rgba(255,255,255,0) 100%);
 }
 
-/* 主内容区 - 杂志风格 */
+/* 主内容区 */
 .main {
   display: grid;
   gap: 2rem;
@@ -351,7 +351,7 @@ const resumeData = ref<ResumeData>()
   border-radius: var(--radius-full);
 }
 
-/* 时间轴 - 3D效果 */
+/* 时间轴  */
 .timeline {
   position: relative;
   padding-left: 1.5rem;
@@ -435,7 +435,7 @@ const resumeData = ref<ResumeData>()
   font-weight: bold;
 }
 
-/* 项目展示 - 卡片组 */
+/* 项目展示  */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

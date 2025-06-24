@@ -16,7 +16,8 @@ app = Flask(__name__,
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
 app.config['SQLALCHEMY_BINDS'] = {
     'yuxin': 'sqlite:///yuxin.db',       # 雨昕相关
-    'config': 'sqlite:///config.db'       # 三方配置相关
+    'config': 'sqlite:///config.db',       # 三方配置相关
+    'topic': 'sqlite:///topic.db'       # 题目
 }
 
 db.init_app(app)
@@ -30,6 +31,9 @@ app.register_blueprint(yuxin_routes)
 #蒲公英的路由
 from backend.routes.routes_pgyer import pgyer_api as pgyer_routes
 app.register_blueprint(pgyer_routes)
+#题目的路由
+from backend.routes.routes_topic import topic_api as topic_routes
+app.register_blueprint(topic_routes)
 
 
 with app.app_context():
