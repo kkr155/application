@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import '../assets/form.css'
 import {Plus} from '@element-plus/icons-vue'
 import {onMounted, ref} from 'vue'
 import Dialog from '@/views/Dialog/Dialog.vue'
@@ -170,9 +171,9 @@ onMounted(() => {
     </form>
   </Dialog>
 
-  <div class="user-management">
+  <div class="form-window">
     <!-- 用户列表 -->
-    <div class="user-list">
+    <div class="form-content">
       <h2>配置列表</h2>
       <div v-if="loading" class="loading">加载中...</div>
 
@@ -185,11 +186,11 @@ onMounted(() => {
 
       <!-- 用户列表 -->
       <ul v-else>
-        <li v-for="config in configs" :key="config.config_id" class="user-item">
-          <div class="user-info">
+        <li v-for="config in configs" :key="config.config_id" class="form-list-item">
+          <div class="form-list-item-content">
             <span class="name">{{ config.name }}</span>
-            <span class="minor" v-if="config.buildBuildVersion != null && config.buildBuildVersion.trim() !== ''">蒲公英构建版本：{{ config.buildBuildVersion }}</span>
-            <span class="minor" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">构建描述</span>
+            <span class="name-secondary" v-if="config.buildBuildVersion != null && config.buildBuildVersion.trim() !== ''">蒲公英构建版本：{{ config.buildBuildVersion }}</span>
+            <span class="name-secondary" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">构建描述</span>
             <pre class="detail" v-if="config.buildUpdateDescription != null && config.buildUpdateDescription.trim() !== ''">{{ config.buildUpdateDescription }}</pre>
             <button class="add-btn" v-if="config.downloadURL != null && config.downloadURL.trim() !== ''" @click="downloadFile(config.downloadURL,config.buildFileKey ??'yuxinzhihui.apk')">
               下载
@@ -210,107 +211,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.user-management {
-  max-width: 800px;
-  margin: 0 auto;
-}
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  width: 400px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-@media (max-width: 768px) {
-  input {
-    max-width: 80vw
-  }
-}
-.user-list {
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.loading,
-.empty-state {
-  text-align: center;
-  padding: 40px 0;
-  color: #666;
-}
-
-.user-item {
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--decoration-border);
-  background: var(--decoration-border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px auto 0 auto;
-  padding: 20px;
-  border-bottom: 1px solid #eee;
-  gap: 6px;
-}
-
-.user-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.name {
-  font-weight: bold;
-}
-
-.minor{
-  color: var(--text-secondary);
-  font-size: 0.95em;
-  margin-top: 15px;
-}
-
-.detail {
-  white-space: pre-wrap;
-  word-break: break-all;
-  max-width: 100%;
-  margin-left: 20px;
-  color: var(--text-primary);
-  font-size: 0.85em;
-  margin-top: 4px;
-  margin-bottom: 10px;
-  background: var(--decoration-border) ;
-}
-
-.add-btn {
-  margin-top: 10px;
-  background: var(--secondary);
-}
-
-.delete-btn {
-  background: var(--primary);
-}
-.empty-state img {
-  margin-bottom: 15px;
-}
-.auto-shrink-img {
-  width: 24px;       /* 设置目标宽度 */
-  height: 24px;      /* 设置目标高度 */
-  object-fit: contain; /* 保持比例，完整显示图片 */
-}
-
-.auto-shrink-img-detail{
-  width: 200px;       /* 设置目标宽度 */
-  height: 200px;      /* 设置目标高度 */
-  object-fit: contain; /* 保持比例，完整显示图片 */
-}
 </style>

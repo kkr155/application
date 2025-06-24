@@ -24,9 +24,8 @@
     </form>
   </Dialog>
 
-  <div  class="user-management">
-    <!-- 用户列表 -->
-    <div class="user-list">
+  <div  class="form-window">
+    <div class="form-content">
       <h2>用户列表</h2>
       <div v-if="loading" class="loading">加载中...</div>
 
@@ -39,10 +38,10 @@
 
       <!-- 用户列表 -->
       <ul v-else>
-        <li v-for="user in users" :key="user.user_id" class="user-item">
-          <div class="user-info">
+        <li v-for="user in users" :key="user.user_id" class="form-list-item">
+          <div class="form-list-item-content">
             <span class="name">{{ user.name }}</span>
-            <span class="username">@{{ user.username }}</span>
+            <span class="name-secondary">@{{ user.username }}</span>
           </div>
           <button
             @click="deleteUser(user.user_id)"
@@ -58,6 +57,7 @@
 </template>
 
 <script setup lang="ts">
+import '../assets/form.css'
 import { ref, onMounted } from 'vue'
 import {Plus} from "@element-plus/icons-vue";
 import {type User, getUsersApi, addUserApi, deleteUserApi} from '@/net/api/yuxin'
@@ -149,87 +149,6 @@ onMounted(() => {
 
 
 <style scoped>
-h3 {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  color: var(--text-primary);
-}
 
-.user-management {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  width: 300px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-@media (max-width: 768px) {
-  input {
-    max-width: 80vw
-  }
-}
-
-
-.user-list {
-  background: var(--decoration-border);;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.loading, .empty-state {
-  text-align: center;
-  padding: 40px 0;
-  color: #666;
-}
-
-.user-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.name {
-  font-weight: bold;
-}
-
-.username {
-  color: var(--text-secondary);
-  font-size: 0.9em;
-}
-
-.add-btn {
-  background: var(--secondary);
-}
-
-.delete-btn {
-  background: var(--primary);
-}
-
-.empty-state img {
-  margin-bottom: 15px;
-}
 
 </style>
